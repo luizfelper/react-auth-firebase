@@ -32,23 +32,23 @@ export default function Signup() {
         <>
             <Card>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Sign Up</h2>
-                    {currentUser && <Alert variant="success">You are already logged in</Alert>}
+                    <h2 className="text-center mb-4">Cadastrar</h2>
+                    {currentUser && <Alert variant="success">Você já está logado!</Alert>}
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
+                            <Form.Label>Endereço de Email</Form.Label>
+                            <Form.Control ref={emailRef} type="email" placeholder="Digite seu email" required />
                         </Form.Group>
                         <Form.Group id="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control ref={passwordRef} type="password" placeholder="Enter Password" required />
+                            <Form.Label>Senha</Form.Label>
+                            <Form.Control ref={passwordRef} type="password" placeholder="Digite sua senha" required />
                         </Form.Group>
                         <Form.Group id="password-confirm">
-                            <Form.Label>Password Confirmation</Form.Label>
-                            <Form.Control ref={passwordConfirmRef} type="password" placeholder="Enter password again" required />
+                            <Form.Label>Confirmação de senha</Form.Label>
+                            <Form.Control ref={passwordConfirmRef} type="password" placeholder="Digite sua senha novamente" required />
                         </Form.Group>
-                        <Button disabled={loading} className="w-100" type="submit">Sign Up</Button>
+                        <Button disabled={loading} className="w-100" type="submit">Cadastrar</Button>
                     </Form>
                 </Card.Body>
             </Card>
