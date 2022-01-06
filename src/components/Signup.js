@@ -23,7 +23,7 @@ export default function Signup() {
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
         } catch {
-            setError("Failed to create an account");
+            setError("Falha ao criar conta");
         }
         setLoading(false);
     }
@@ -33,7 +33,10 @@ export default function Signup() {
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Cadastrar</h2>
-                    {currentUser && <Alert variant="success">Você já está logado!</Alert>}
+                    {currentUser && <Alert variant="success">
+                        Você já está logado com o email:  
+                         <spam> {currentUser && currentUser.email}</spam>
+                        </Alert>}
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
