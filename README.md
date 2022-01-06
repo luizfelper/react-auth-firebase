@@ -6,6 +6,8 @@ Aplicação de autenticação de usuário com firebase usando email e senha em u
 
 Esse projeto foi criado com [Create React App](https://github.com/facebook/create-react-app).
 
+# Firebase
+
 Toda configuração do Firebase é feita no arquivo `.env.local` que está no diretório `src` localmente.
 
 ## Scripts disponíveis
