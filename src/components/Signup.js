@@ -2,11 +2,15 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 
+//Parei no minuto 25:44 do vídeo https://www.youtube.com/watch?v=PKwu15ldZ7k&t=2141s&ab_channel=WebDevSimplified
+
 export default function Signup() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
+
     const { signup, currentUser } = useAuth();
+    
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -35,7 +39,7 @@ export default function Signup() {
                     <h2 className="text-center mb-4">Cadastrar</h2>
                     {currentUser && <Alert variant="success">
                         Você já está logado com o email:  
-                         <spam> {currentUser && currentUser.email}</spam>
+                         <h3> {currentUser.email}</h3>
                         </Alert>}
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
