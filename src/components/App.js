@@ -1,6 +1,9 @@
 import React from 'react'
+//Rotas
 import Signup from './Signup';
 import Dashboard from './Dashboard';
+import Login from './Login';
+//Provedor de Autenticação
 import { Container } from 'react-bootstrap';
 import { AuthProvider } from '../contexts/AuthContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -15,6 +18,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Dashboard />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </AuthProvider>
         </Router>

@@ -3,55 +3,36 @@ import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
-
 //Parei no minuto 25:44 do vídeo https://www.youtube.com/watch?v=PKwu15ldZ7k&t=2141s&ab_channel=WebDevSimplified
 
-export default function Signup() {
+export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const passwordConfirmRef = useRef();
-
-    const { signup, logout, currentUser } = useAuth();
-    
+    const { signup, currentUser } = useAuth();   
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e) {
         e.preventDefault();
         
-        if(passwordRef.current.value !== passwordConfirmRef.current.value) {
-            setError("Passwords do not match");
-            return;
-        }
-
         try {
             setError('');
             setLoading(true);
             await signup(emailRef.current.value, passwordRef.current.value);
         } catch {
-            setError("Falha ao criar conta");
+            setError("Falha ao fazer login");
         }
         setLoading(false);
     }
-
-    async function handleLogout() {
-        setLoading(true);
-        try {
-          await logout();
-        } catch {
-          console.log("error");
-        }
-        setLoading(false);
-      }
+    
     return (
         <>
             <Card>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Cadastrar</h2>
+                    <h2 className="text-center mb-4">Fazer Login</h2>
                     {currentUser && <Alert variant="success">
                         Você já está logado com o email:  
                          <h3> {currentUser.email}</h3>
-                         <Button onClick={handleLogout}>Deslogar</Button>
                         </Alert>}
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
@@ -63,16 +44,12 @@ export default function Signup() {
                             <Form.Label>Senha</Form.Label>
                             <Form.Control ref={passwordRef} type="password" placeholder="Digite sua senha" required />
                         </Form.Group>
-                        <Form.Group id="password-confirm">
-                            <Form.Label>Confirmação de senha</Form.Label>
-                            <Form.Control ref={passwordConfirmRef} type="password" placeholder="Digite sua senha novamente" required />
-                        </Form.Group>
-                        <Button disabled={loading} className="w-100" type="submit">Cadastrar</Button>
+                        <Button disabled={loading} className="w-100" type="submit">Logar</Button>
                     </Form>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Já possui uma conta? <Link to={'/login'}>Logar!</Link>
+                Não possui uma conta?<Link to={'/signup'}> Cadastre-se</Link>
             </div>
         </>
     )
