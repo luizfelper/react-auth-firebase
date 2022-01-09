@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 //Parei no minuto 25:44 do vídeo https://www.youtube.com/watch?v=PKwu15ldZ7k&t=2141s&ab_channel=WebDevSimplified
 
+//08/01/2022 Não está sendo possível realizar o login na aplicação porque ainda não foi implementado a função de login no FrontEnd.
+
 export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
